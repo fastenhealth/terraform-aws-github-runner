@@ -30,7 +30,10 @@ Remove-Item C:\amazon-cloudwatch-agent.msi
 
 # Install dependent tools
 Write-Host "Installing additional development tools"
-choco install git awscli -y
+# see https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md
+choco install git awscli yarn make 7zip aria2 docker jq  -y
+choco install golang --version=1.21.3 -y
+choco install nodejs --version=20.8.1 -y
 refreshenv
 
 Write-Host "Creating actions-runner directory for the GH Action installtion"
@@ -49,4 +52,5 @@ $action = New-ScheduledTaskAction -WorkingDirectory "C:\actions-runner" -Execute
 $trigger = New-ScheduledTaskTrigger -AtStartup
 Register-ScheduledTask -TaskName "runnerinit" -Action $action -Trigger $trigger -User System -RunLevel Highest -Force
 
-C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
+& 'C:/Program Files/Amazon/EC2Launch/ec2launch' reset --block
+& 'C:/Program Files/Amazon/EC2Launch/ec2launch' sysprep --block

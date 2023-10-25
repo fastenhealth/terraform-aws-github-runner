@@ -15,7 +15,7 @@ variable "runner_version" {
 variable "region" {
   description = "The region to build the image in"
   type        = string
-  default     = "eu-west-1"
+  default     = "us-east-1"
 }
 
 variable "security_group_id" {
@@ -32,7 +32,7 @@ variable "subnet_id" {
 
 variable "root_volume_size_gb" {
   type    = number
-  default = 30
+  default = 50
 }
 
 variable "ebs_delete_on_termination" {
