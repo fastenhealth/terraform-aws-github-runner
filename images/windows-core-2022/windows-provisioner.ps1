@@ -31,7 +31,8 @@ Remove-Item C:\amazon-cloudwatch-agent.msi
 # Install dependent tools
 Write-Host "Installing additional development tools"
 # see https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md
-choco install git awscli yarn make 7zip aria2 docker jq  -y
+choco install git.install -y --params "'/GitAndUnixToolsOnPath /WindowsTerminal /NoAutoCrlf'"
+choco install awscli yarn make 7zip aria2 jq -y
 choco install golang --version=1.21.3 -y
 choco install nodejs --version=20.8.1 -y
 refreshenv
