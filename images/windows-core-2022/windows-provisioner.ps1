@@ -35,6 +35,7 @@ choco install git.install -y --params "'/GitAndUnixToolsOnPath /WindowsTerminal 
 choco install awscli yarn make 7zip aria2 jq -y
 choco install golang --version=1.21.3 -y
 choco install nodejs --version=20.8.1 -y
+choco install mingw --version 12.2.0.03042023 --allow-downgrade -y
 refreshenv
 
 Write-Host "Creating actions-runner directory for the GH Action installtion"
