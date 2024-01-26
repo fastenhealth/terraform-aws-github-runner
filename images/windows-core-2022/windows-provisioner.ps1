@@ -36,7 +36,11 @@ choco install awscli yarn make 7zip aria2 jq -y
 choco install golang --version=1.21.3 -y
 choco install nodejs --version=20.8.1 -y
 choco install mingw --version 12.2.0.03042023 --allow-downgrade -y
+choco install windows-sdk-11-version-22h2-all -y
 refreshenv
+
+# Update PATH, required because windows-sdk does not correctly add makeappx.exe to path
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64", "Machine")
 
 Write-Host "Creating actions-runner directory for the GH Action installtion"
 New-Item -ItemType Directory -Path C:\actions-runner ; Set-Location C:\actions-runner
