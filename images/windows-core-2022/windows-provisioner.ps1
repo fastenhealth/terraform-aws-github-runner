@@ -37,6 +37,7 @@ choco install golang --version=1.21.3 -y
 choco install nodejs --version=20.8.1 -y
 choco install mingw --version 12.2.0.03042023 --allow-downgrade -y
 choco install windows-sdk-11-version-22h2-all -y
+choco install powershell-core dotnet-desktopruntime -y
 refreshenv
 
 # Update PATH, required because windows-sdk does not correctly add makeappx.exe to path
